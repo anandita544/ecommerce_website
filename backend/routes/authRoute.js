@@ -3,6 +3,7 @@ import {
   registerController,
   loginController,
   testController,
+  forgotPasswordController,
 } from "../controllers/authController.js";
 import requireSignIn from "../middlewares/authMiddleware.js";
 import isAdmin from "../middlewares/authMiddleware.js";

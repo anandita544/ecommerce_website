@@ -11,6 +11,7 @@ function Register() {
   const [password, setPassword] = useState();
   const [phone, setPhone] = useState();
   const [address, setAddress] = useState();
+  const [answer, setAnswer] = useState();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -20,6 +21,7 @@ function Register() {
         password,
         address,
         phone,
+        answer,
       });
       if (res.data.success) {
         toast.success(res && res.data.message);
@@ -32,7 +34,7 @@ function Register() {
       toast.error("something went wrong");
     }
   };
-  // console.log(process.env.REACT_APP_API);
+
   return (
     <Layout title={"Register-ecommerce app"}>
       <div className="form-container">
@@ -90,6 +92,17 @@ function Register() {
               id="exampleInputPassword1"
               placeholder="Address"
               onChange={(e) => setAddress(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <input
+              type="text"
+              value={answer}
+              className="form-control"
+              id="exampleInputPassword1"
+              placeholder="What is your favourite sport"
+              onChange={(e) => setAnswer(e.target.value)}
               required
             />
           </div>

@@ -4,14 +4,14 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../../styles/AuthStyles.css";
-import { useAuth } from "../../components/context/auth";
+import { useAuth } from "../../components/context/auth.js";
 function Login() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [auth, setAuth] = useAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [auth, setAuth] = useAuth("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,7 +20,7 @@ function Login() {
         email,
         password,
       });
-      if (res.data.success) {
+      if (res && res.data.success) {
         toast.success(res && res.data.message);
         setAuth({
           ...auth,
@@ -65,6 +65,17 @@ function Login() {
             />
           </div>
 
+          <div className="mb-3">
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={() => {
+                navigate("./forgot-password");
+              }}
+            >
+              Forgot password
+            </button>
+          </div>
           <button type="submit" className="btn btn-primary">
             Login
           </button>
