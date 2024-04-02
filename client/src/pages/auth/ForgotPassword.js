@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import "../../styles/AuthStyles.css";
 
-const ForgotPasssword = () => {
+function ForgotPasssword() {
   const [email, setEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [answer, setAnswer] = useState("");
@@ -80,6 +80,6 @@ const ForgotPasssword = () => {
       </div>
     </Layout>
   );
-};
+}
 
 export default ForgotPasssword;

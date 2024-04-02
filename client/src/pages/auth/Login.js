@@ -70,7 +70,7 @@ function Login() {
               type="button"
               className="btn btn-primary"
               onClick={() => {
-                navigate("./forgot-password");
+                navigate("/forgot-password");
               }}
             >
               Forgot password

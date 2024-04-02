@@ -19,7 +19,7 @@ function App() {
         <Route path="/dashboard" element={<PrivateRoute />}>
           <Route path="" element={<Dashboard />} />
         </Route>
-        <Route path="/forgot-password" element={<ForgotPasssword />}></Route>
+        <Route path="/forgot-password" element={<ForgotPasssword />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/policy" element={<Policy />} />

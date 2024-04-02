@@ -1,6 +1,6 @@
 import JWT from "jsonwebtoken";
 import userModel from "../models/userModel.js";
-const requireSignIn = async (req, res, next) => {
+async function requireSignIn(req, res, next) {
   try {
     const decode = JWT.verify(
       req.headers.authorization,
@@ -11,10 +11,10 @@ const requireSignIn = async (req, res, next) => {
   } catch (err) {
     console.log(err);
   }
-};
-export default requireSignIn;
+}
+
 //admin access
-export const isAdmin = async (req, res, next) => {
+async function isAdmin(req, res, next) {
   try {
     const user = await userModel.findById(req.user._id);
     if (user.role !== 1) {
@@ -35,4 +35,5 @@ export const isAdmin = async (req, res, next) => {
       message: "error in middleware",
     });
   }
-};
+}
+export { requireSignIn, isAdmin };
