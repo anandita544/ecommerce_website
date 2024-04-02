@@ -2,11 +2,12 @@ import Layout from "../../components/Layout/Layout";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "../../styles/AuthStyles.css";
 import { useAuth } from "../../components/context/auth";
 function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -27,7 +28,7 @@ function Login() {
           token: res.data.token,
         });
         localStorage.setItem("auth", JSON.stringify(res.data));
-        navigate("/");
+        navigate(location.state || "/");
       } else {
         toast.error(res.data.message);
       }
